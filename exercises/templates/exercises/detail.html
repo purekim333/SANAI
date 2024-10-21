@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{exercise.name}}</h1>
+
+<h4>참여자 목록</h4>
+<ol>
+  {% for participant in exercise.participators.all  %}
+    <li>{{ participant.username }}</li>
+  {% endfor %}
+</ol>
+
+<p>내용 : {{ exercise.content }}</p>
+<p>생성일자 : {{ exercise.created_at }}</p>
+
+<hr>
+<a href="{% url "exercises:update" exercise.pk %}">[수정하기]</a>
+<form action="{% url "exercises:delete" exercise.pk %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="삭제하기">
+</form>
+
+<hr>
+<a href="{% url "exercises:index" %}">[BACK]</a>
+
+{% endblock content %}

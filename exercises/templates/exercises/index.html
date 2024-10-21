@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>운동 참여 페이지</h1>
+<hr>
+<a href="{% url "exercises:create" %}"><h3>생성하기</h3></a>
+
+<ul>
+  {% for exercise in exercises %}
+    <li><a href="{% url "exercises:detail" exercise.pk %}">{{exercise.pk}} - {{exercise.name}}</a></li>
+    <li> 참여자 : {{exercise.participators.count }}</li>
+  {% empty %}
+    <li>진행 가능한 운동 모임이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+
+{% endblock content %}

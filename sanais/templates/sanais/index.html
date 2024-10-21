@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>사나이 클럽</h1>
+<p>{{request.user}}</p>
+
+{% if request.user.is_authenticated %}
+{{request.user}}
+
+{% else %}
+<p>fuck</p>
+{% endif %}
+{% comment %} {% for popular in populars %}
+
+{% endfor %} {% endcomment %}
+{% endblock content %}
+

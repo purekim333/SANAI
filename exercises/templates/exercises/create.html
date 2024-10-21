@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>운동을 생성해 주세요</h1>
+<form action="{% url "exercises:create" %}" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="생성하기">
+</form>
+
+<a href="{% url "exercises:index" %}">[BACK]</a>
+{% endblock content %}
